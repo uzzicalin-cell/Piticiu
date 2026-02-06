@@ -131,9 +131,7 @@ top:35px;
 </head>
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="media/muzica1.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic" loop></audio>
 
 <div class="container" id="main">
 
@@ -182,7 +180,31 @@ mea mai roz 🌸
 <p>Chiar și așa, îți doresc o zi plină de dragoste și zâmbete 💖</p>
 </div>
 
-<script>
+<!-- <script>
+ 
+const music = document.getElementById('bgMusic');
+music.src = 'media/muzica1.mp3'; 
+music.volume = 0.6;
+
+
+// music.loop = true;
+
+window.addEventListener('load', () => {
+  const playPromise = music.play();
+  
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      // Muzica a pornit cu succes
+      console.log("Muzica pornește automat 🎵");
+    }).catch(error => {
+      // Browserul blochează autoplay pe mobil
+      console.log("Autoplay blocat, muzica va porni la primul click 👆");
+    });
+  }
+});
+// music.play();
+
+
 function yes(){
   document.getElementById('main').classList.add('hidden');
   document.getElementById('love').classList.remove('hidden');
@@ -211,7 +233,10 @@ for(let i=0;i<25;i++){
   heart.style.animationDuration=3+Math.random()*5+'s';
   document.body.appendChild(heart);
 }
-</script>
+</script> -->
+
+<script src="script.js"></script>
+
 
 </body>
 </html>
