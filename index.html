@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
+<style>
+body{
+margin:0;
+font-family: Arial, sans-serif;
+background:#ffd6e8;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.heart-fall{
+position:absolute;
+color:#ff4d88;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);opacity:1}
+100%{transform:translateY(110vh);opacity:0}
+}
+
+.container{
+text-align:center;
+padding:25px;
+max-width:420px;
+}
+
+h1{
+color:#e6003d;
+}
+
+p{
+color:#e6003d;
+font-size:1.1rem;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+justify-content:center;
+margin-top:25px;
+}
+
+button{
+background:#fff;
+border:none;
+border-radius:30px;
+padding:15px 35px;
+font-size:1.1rem;
+color:#e6003d;
+box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.hidden{display:none}
+
+.gifts img{
+width:160px;
+border-radius:15px;
+margin:10px;
+opacity:0;
+transform:scale(0.5);
+transition:all 1s ease;
+}
+
+.gifts.show img{
+opacity:1;
+transform:scale(1);
+}
+
+.couple{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-bottom:20px;
+}
+
+.character{
+width:90px;
+height:140px;
+background:#fff;
+border-radius:40px;
+position:relative;
+}
+
+.head{
+width:70px;
+height:70px;
+background:#ffe0bd;
+border-radius:50%;
+position:absolute;
+top:-55px;
+left:10px;
+}
+
+.eye{
+width:6px;
+height:6px;
+background:#000;
+border-radius:50%;
+position:absolute;
+top:25px;
+}
+
+.eye.left{left:18px}
+.eye.right{right:18px}
+
+.heart{
+font-size:32px;
+position:absolute;
+right:-30px;
+top:35px;
+}
+@media(max-width:480px){
+  h1{font-size:1.5rem}
+  p{font-size:1rem}
+  button{padding:12px 26px;font-size:1rem}
+  .character{width:70px;height:110px}
+  .head{width:55px;height:55px;top:-45px}
+  .gifts img{width:130px}
+}
+</style>
+</head>
+<body>
+
+<audio autoplay loop>
+  <source src="media/muzica1.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container" id="main">
+
+<div class="couple">
+  <div class="character">
+    <div class="head">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+    </div>
+    <div class="heart">❤️</div>
+  </div>
+  <div class="character">
+    <div class="head">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+    </div>
+  </div>
+</div>
+
+<h1>Piticiule, vrei să fii Valentine-ul meu? 💕</h1>
+
+<div class="buttons">
+<button onclick="yes()">DA</button>
+<button onclick="nope()">NU</button>
+</div>
+</div>
+
+<div class="container hidden" id="love">
+<button onclick="goBack()" style="margin-bottom:15px;background:#fff;border:none;border-radius:20px;padding:8px 20px;color:#e6003d;box-shadow:0 3px 8px rgba(0,0,0,.15)">⬅ Înapoi</button>
+<h1>Te iubesc din tot sufletul ❤️</h1>
+<p>
+Din ziua în care ai apărut în viața mea, totul e mai frumos.
+Zâmbetul tău îmi luminează fiecare clipă și îmi doresc să creez
+mii de amintiri cu tine. Îți mulțumesc că exiști și că faci lumea
+mea mai roz 🌸
+</p>
+<div class="gifts" id="giftAnim">
+<img src="https://i.pinimg.com/736x/bb/88/ae/bb88ae501ded96d641a2b2e70bc7d41d.jpg">
+<img src="https://corsomarket.ro/wp-content/uploads/2022/12/RAFFAELLO-150G-600x600-1.webp">
+</div>
+</div>
+
+<div class="container hidden" id="noPage">
+<button onclick="goBack()" style="margin-bottom:15px;background:#fff;border:none;border-radius:20px;padding:8px 20px;color:#e6003d;box-shadow:0 3px 8px rgba(0,0,0,.15)">⬅ Înapoi</button>
+<h1>Mulțumesc pentru sinceritate 💔</h1>
+<p>Chiar și așa, îți doresc o zi plină de dragoste și zâmbete 💖</p>
+</div>
+
+<script>
+function yes(){
+  document.getElementById('main').classList.add('hidden');
+  document.getElementById('love').classList.remove('hidden');
+  setTimeout(()=>{
+    document.getElementById('giftAnim').classList.add('show');
+  },300);
+}
+
+function nope(){
+  document.getElementById('main').classList.add('hidden');
+  document.getElementById('noPage').classList.remove('hidden');
+}
+
+function goBack(){
+  document.getElementById('love').classList.add('hidden');
+  document.getElementById('noPage').classList.add('hidden');
+  document.getElementById('main').classList.remove('hidden');
+}
+
+// hearts animation
+for(let i=0;i<25;i++){
+  let heart=document.createElement('div');
+  heart.className='heart-fall';
+  heart.innerHTML='❤️';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.animationDuration=3+Math.random()*5+'s';
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
